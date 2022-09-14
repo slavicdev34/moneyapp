@@ -1,34 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { Col, Color, Container, H1, Row, P } from './styles/shared';
+import { GlobalStyle } from './styles/GlobalStyle';
+import { TopNav } from './components/TopNav';
+import { List } from './components/List';
+import { Form } from './components/Form';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <>
+      <GlobalStyle />
+      <TopNav />
+      <Container $margin="3rem auto 0">
+        <Row $margin="0 0.5rem">
+          <Col $size={1}>
+            <H1>
+              Welcome to <Color $color="highlight">Exchange</Color> rates list
+            </H1>
+            <P>
+              Get the latest exchange rates for over 33 currencies from the comfort of your own home with the Exchange
+              Rates App.
+            </P>
+
+            <Form />
+          </Col>
+          <Col $size={1}>
+            <List data={[{} as any]} />
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
 }
 
-export default App
+export default App;
