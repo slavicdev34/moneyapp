@@ -5,32 +5,36 @@ import { List } from './components/List';
 import { Form } from './components/Form';
 import { useQuery } from '@tanstack/react-query';
 import { getRates } from './api/rates';
+import { Data } from './utils';
 
 function App() {
-  const query = useQuery(['rates'], getRates);
-  console.log(query.data);
+  const { data, error, isError } = useQuery<Data[], Error>(['rates'], getRates);
 
   return (
     <>
       <GlobalStyle />
       <TopNav />
       <Container $margin="3rem auto 0">
-        <Row $margin="0 0.5rem">
-          <Col $size={1}>
-            <H1>
-              Welcome to <Color $color="highlight">Exchange</Color> rates list
-            </H1>
-            <P>
-              Get the latest exchange rates for over 33 currencies from the comfort of your own home with the Exchange
-              Rates App.
-            </P>
+        {isError ? (
+          <div>{error.message}</div>
+        ) : (
+          <Row $margin="0 0.5rem">
+            <Col $size={1}>
+              <H1>
+                Welcome to <Color $color="highlight">Exchange</Color> rates list
+              </H1>
+              <P>
+                Get the latest exchange rates for over 32 currencies from the comfort of your own home with the Exchange
+                Rates App.
+              </P>
 
-            <Form />
-          </Col>
-          <Col $size={1}>
-            <List data={[{} as any]} />
-          </Col>
-        </Row>
+              <Form data={data ?? []} />
+            </Col>
+            <Col $size={1}>
+              <List data={data ?? []} />
+            </Col>
+          </Row>
+        )}
       </Container>
     </>
   );

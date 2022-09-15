@@ -36,6 +36,7 @@ export const Input = styled.input`
   border: none;
   font-size: 0.875rem;
   line-height: 1.25rem;
+  appearance: none;
 `;
 
 export const CurrencyWrapper = styled.div`

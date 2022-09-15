@@ -1,5 +1,11 @@
+import { parseResponse } from '../utils';
+
 export const getRates = async () => {
-  const res = await fetch('/rates');
+  const res = await fetch('/api/rates');
   const data = await res.text();
-  return data;
+  if (!res.ok) {
+    throw new Error('Exchange rates are currently unavailable, please try again later');
+  }
+
+  return parseResponse(data);
 };
