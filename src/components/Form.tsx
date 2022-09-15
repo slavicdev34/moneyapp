@@ -4,7 +4,7 @@ import { CurrencyInput } from './CurrencyInput';
 export const Form = () => {
   return (
     <form>
-      <Row $align="flex-end">
+      <Row $align="flex-end" $direction="row">
         <Col $size={1}>
           <CurrencyInput />
         </Col>

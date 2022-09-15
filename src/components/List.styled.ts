@@ -25,7 +25,7 @@ export const TD = styled.td`
 
 export const Table = styled.table`
   font-size: 0.7rem;
-  min-width: 100%;
+  width: 100%;
   border-collapse: collapse;
   overflow: hidden;
   border-radius: 0.275rem;

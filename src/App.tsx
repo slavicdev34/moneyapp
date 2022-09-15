@@ -3,8 +3,13 @@ import { GlobalStyle } from './styles/GlobalStyle';
 import { TopNav } from './components/TopNav';
 import { List } from './components/List';
 import { Form } from './components/Form';
+import { useQuery } from '@tanstack/react-query';
+import { getRates } from './api/rates';
 
 function App() {
+  const query = useQuery(['rates'], getRates);
+  console.log(query.data);
+
   return (
     <>
       <GlobalStyle />

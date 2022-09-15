@@ -10,6 +10,7 @@ interface WithMargin {
 }
 
 interface RowProps {
+  $direction?: 'row' | 'column';
   $margin?: string;
   $align?: string;
 }
@@ -21,7 +22,7 @@ interface ColorProps {
 export const Row = styled.div<RowProps>`
   display: flex;
   gap: 0.75rem;
-  flex-direction: column;
+  flex-direction: ${(props) => props.$direction ?? 'column'};
   align-items: ${(props) => props.$align ?? 'flex-start'};
   margin: ${(props) => props.$margin};
   @media ${breakpoints.sm} {
@@ -32,6 +33,7 @@ export const Row = styled.div<RowProps>`
 export const Col = styled.div<ColProps>`
   flex-grow: ${(p) => p.$size};
   flex-shrink: 1;
+  width: 100%;
 `;
 
 export const H1 = styled.h1`

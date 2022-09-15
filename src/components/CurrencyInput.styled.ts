@@ -34,11 +34,8 @@ export const Input = styled.input`
   width: 100%;
   border-radius: 0.375rem;
   border: none;
-
-  @media ${breakpoints.sm} {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 `;
 
 export const CurrencyWrapper = styled.div`
@@ -59,6 +56,7 @@ export const Select = styled.select`
   height: 100%;
   border-radius: 0.375rem;
   border-color: transparent;
+  appearance: none;
 
   @media ${breakpoints.sm} {
     font-size: 0.875rem;
