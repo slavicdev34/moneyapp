@@ -4,7 +4,7 @@ import { calculate, type Data } from '../utils';
 import { CurrencyInput } from './CurrencyInput';
 
 interface Props {
-  data: Data[];
+  data: Data;
 }
 
 export const Form: React.FC<Props> = ({ data }) => {
@@ -13,8 +13,8 @@ export const Form: React.FC<Props> = ({ data }) => {
     (e) => {
       e.preventDefault();
       const formData = new FormData(e.target as HTMLFormElement);
-      const result = calculate(Number(formData.get('amount')), String(formData.get('code')), data);
-      setResult(result?.toFixed(2));
+      const result = calculate(Number(formData.get('amount')), String(formData.get('code')), data.list);
+      setResult(`${result?.toFixed(2)} ${formData.get('code')}`);
     },
     [data],
   );
@@ -23,7 +23,7 @@ export const Form: React.FC<Props> = ({ data }) => {
     <form onSubmit={handleSubmit}>
       <Row $align="flex-end" $direction="row">
         <Col $size={1}>
-          <CurrencyInput data={data} />
+          <CurrencyInput list={data.list} />
         </Col>
         <div>
           <Button>Convert</Button>

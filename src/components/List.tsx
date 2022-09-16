@@ -1,13 +1,11 @@
-import { type Data } from '../utils';
+import type { Data } from '../utils';
 import { TD, TH, Thead, Table, DataRow } from './List.styled';
 
 interface TableProps {
-  data: Data[];
+  data: Data;
 }
 
 export const List: React.FC<TableProps> = ({ data }) => {
-  if (!data) return null;
-
   return (
     <Table>
       <Thead>
@@ -20,13 +18,13 @@ export const List: React.FC<TableProps> = ({ data }) => {
         </tr>
       </Thead>
       <tbody>
-        {data.map((d, i) => (
-          <DataRow $highlight={i % 2 === 0} key={d.code}>
-            <TD>{d.country}</TD>
-            <TD>{d.currency}</TD>
-            <TD>{d.amount}</TD>
-            <TD>{d.code}</TD>
-            <TD>{d.rate}</TD>
+        {data.list.map((l, i) => (
+          <DataRow $highlight={i % 2 === 0} key={l.code}>
+            <TD>{l.country}</TD>
+            <TD>{l.currency}</TD>
+            <TD>{l.amount}</TD>
+            <TD>{l.code}</TD>
+            <TD>{l.rate}</TD>
           </DataRow>
         ))}
       </tbody>

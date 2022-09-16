@@ -1,4 +1,4 @@
-export type Data = ReturnType<typeof parseLine>;
+export type Data = ReturnType<typeof parseResponse>;
 
 const parseLine = (line: string) => {
   const items = line.split('|');
@@ -13,17 +13,17 @@ const parseLine = (line: string) => {
 
 export const parseResponse = (input: string) => {
   const lines = input.split('\n');
-  const data = lines.reduce((acc, line, i) => {
+  const date = lines[0]?.split('#')[0];
+  const list = lines.reduce((acc, line, i) => {
     if (i <= 1) return acc;
     if (!line) return acc;
     return [...acc, parseLine(line)];
-  }, [] as Data[]);
-  return data;
+  }, [] as ReturnType<typeof parseLine>[]);
+  return { list, date };
 };
 
-export const calculate = (input: number, code: string, data: Data[]) => {
+export const calculate = (input: number, code: string, data: Data['list']) => {
   const currency = data.find((d) => d.code === code);
-  console.log({ input, code, data, currency });
-  if (!currency) return;
+  if (!currency || currency.rate === 0 || currency.amount === 0) return;
   return input / (currency.rate / currency.amount);
 };
