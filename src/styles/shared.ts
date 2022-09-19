@@ -16,7 +16,7 @@ interface RowProps {
 }
 
 interface ColorProps {
-  $color: 'bg' | 'highlight' | 'accent' | 'primary';
+  $color: 'bg' | 'bgAccent' | 'bgHighlight' | 'highlight' | 'accent' | 'primary' | 'inverse';
 }
 
 export const Row = styled.div<RowProps>`
@@ -34,6 +34,16 @@ export const Col = styled.div<ColProps>`
   flex-grow: ${(p) => p.$size};
   flex-shrink: 1;
   width: 100%;
+`;
+
+export const Grid = styled.div<WithMargin>`
+  gap: 0.75rem;
+  margin: ${(props) => props.$margin};
+  display: grid;
+  @media ${breakpoints.sm} {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
 `;
 
 export const H1 = styled.h1`
@@ -74,6 +84,7 @@ export const Button = styled.button`
   font-size: 0.875rem;
   line-height: 1.25rem;
   border: none;
+  color: var(--inverse);
 `;
 
 export const Glass = styled.div`

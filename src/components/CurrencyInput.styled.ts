@@ -58,6 +58,7 @@ export const Select = styled.select`
   border-radius: 0.375rem;
   border-color: transparent;
   appearance: none;
+  color: var(--inverse);
 
   @media ${breakpoints.sm} {
     font-size: 0.875rem;

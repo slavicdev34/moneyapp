@@ -11,7 +11,7 @@ export const List: React.FC<TableProps> = ({ data }) => {
       <Thead>
         <tr>
           <TH>Country</TH>
-          <TH>Currency</TH>
+          <TH $hideOnMobile>Currency</TH>
           <TH>Amount</TH>
           <TH>Code</TH>
           <TH>Rate</TH>
@@ -21,7 +21,7 @@ export const List: React.FC<TableProps> = ({ data }) => {
         {data.list.map((l, i) => (
           <DataRow $highlight={i % 2 === 0} key={l.code}>
             <TD>{l.country}</TD>
-            <TD>{l.currency}</TD>
+            <TD $hideOnMobile>{l.currency}</TD>
             <TD>{l.amount}</TD>
             <TD>{l.code}</TD>
             <TD>{l.rate}</TD>

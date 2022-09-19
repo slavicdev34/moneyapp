@@ -1,4 +1,4 @@
-import { Col, Color, Container, H1, Row, P, H2 } from './styles/shared';
+import { Col, Color, Container, H1, Row, P, H2, Grid } from './styles/shared';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { TopNav } from './components/TopNav';
 import { List } from './components/List';
@@ -9,7 +9,7 @@ import { Data } from './utils';
 
 function App() {
   const { data, error, isError } = useQuery<Data, Error>(['rates'], getRates);
-  console.log(data);
+
   return (
     <>
       <GlobalStyle />
@@ -18,8 +18,8 @@ function App() {
         {isError ? (
           <div>{error.message}</div>
         ) : (
-          <Row $margin="0 0.5rem">
-            <Col $size={1}>
+          <Grid $margin="0 0.5rem">
+            <div>
               <H1>
                 Welcome to <Color $color="highlight">Exchange</Color> rates list
               </H1>
@@ -29,14 +29,14 @@ function App() {
               </P>
 
               {data && <Form data={data} />}
-            </Col>
+            </div>
             {data && (
-              <Col $size={1}>
+              <div>
                 <H2>{data.date}</H2>
                 <List data={data} />
-              </Col>
+              </div>
             )}
-          </Row>
+          </Grid>
         )}
       </Container>
     </>

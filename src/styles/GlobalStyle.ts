@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
 	--bgHighlight: #1e293b;
 	--highlight: #f77f4f;
 	--accent: #ffffff;
+	--inverse: #000000;
 	--primary: #d4d3dc;
 
 	font-family: Arial, Helvetica, sans-serif;
